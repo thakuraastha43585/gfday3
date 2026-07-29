@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Friendship Day, Bestie! 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF3F8;
+    --sky-top:#FFC9E3;
+    --sky-bottom:#FFF3F8;
+    --navy:#7A1E4B;
+    --coral:#FF4F93;
+    --gold:#FFC94D;
+    --mint:#C48CFF;
+    --pink:#FFB3D1;
+    --skyblue:#FF8FC0;
+    --white:#FFFFFF;
+    --ribbon:#FF6FA5;
+    --ribbon-dark:#E0448A;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    background:var(--cream);
+    color:var(--navy);
+    background-image:radial-gradient(circle, rgba(122,30,75,0.05) 1.5px, transparent 1.5px);
+    background-size:22px 22px;
+  }
+  h1,h2,h3{font-family:'Baloo 2', cursive; margin:0; line-height:1.15;}
+  p{margin:0;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 1.5rem;}
+  section{padding:4.5rem 0;}
+  .eyebrow{
+    display:inline-block;
+    font-weight:700;
+    letter-spacing:.04em;
+    color:var(--coral);
+    background:var(--white);
+    border:2px dashed var(--coral);
+    border-radius:999px;
+    padding:.35rem 1.1rem;
+    font-size:.85rem;
+    margin-bottom:1.1rem;
+  }
+  .center{text-align:center;}
+  .sub{font-size:1.05rem; opacity:.8; margin-top:.6rem; max-width:540px; margin-left:auto; margin-right:auto;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 78%);
+    padding:3.5rem 0 2rem;
+    text-align:center;
+  }
+  .cloud{
+    position:absolute;
+    background:#fff;
+    border-radius:50%;
+    opacity:.8;
+    filter:blur(0.5px);
+  }
+  .cloud::before, .cloud::after{
+    content:'';
+    position:absolute;
+    background:#fff;
+    border-radius:50%;
+  }
+  .cloud1{width:90px; height:36px; top:10%; left:6%; animation:drift 38s linear infinite;}
+  .cloud1::before{width:50px; height:50px; top:-22px; left:8px;}
+  .cloud1::after{width:40px; height:40px; top:-14px; left:46px;}
+  .cloud2{width:120px; height:42px; top:18%; right:8%; animation:drift 50s linear infinite reverse;}
+  .cloud2::before{width:60px; height:60px; top:-26px; left:14px;}
+  .cloud2::after{width:46px; height:46px; top:-16px; left:60px;}
+  .cloud3{width:70px; height:28px; top:6%; left:42%; animation:drift 30s linear infinite;}
+  .cloud3::before{width:40px; height:40px; top:-18px; left:6px;}
+  .cloud3::after{width:30px; height:30px; top:-10px; left:36px;}
+  @keyframes drift{ from{transform:translateX(-30px);} to{transform:translateX(30px);} }
+
+  .star{
+    position:absolute;
+    font-size:1.1rem;
+    opacity:.7;
+    animation:twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:.25; transform:scale(.85);} 50%{opacity:.85; transform:scale(1.1);} }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    color:var(--navy);
+  }
+  .hero .tagline{
+    font-size:1.15rem;
+    font-weight:600;
+    margin-top:.9rem;
+    color:var(--navy);
+    opacity:.85;
+  }
+  .hero .hint{
+    margin-top:1.4rem;
+    font-weight:700;
+    color:var(--coral);
+    font-size:.95rem;
+  }
+
+  .balloon-field{
+    position:relative;
+    height:340px;
+    margin-top:1rem;
+  }
+  .balloon{
+    position:absolute;
+    bottom:-40px;
+    width:64px;
+    cursor:pointer;
+    animation:bob 3.4s ease-in-out infinite;
+    transition:transform .25s ease, opacity .35s ease;
+    touch-action:manipulation;
+  }
+  .balloon svg{width:100%; display:block; filter:drop-shadow(2px 4px 3px rgba(28,46,74,.15));}
+  .balloon:hover{transform:scale(1.06) translateY(-4px);}
+  .balloon.popped{
+    transform:scale(1.5);
+    opacity:0;
+    pointer-events:none;
+  }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
+  @media (prefers-reduced-motion:reduce){ .balloon{animation:none;} .cloud1,.cloud2,.cloud3,.star{animation:none;} }
+
+  .reveal-banner{
+    margin:1.6rem auto 0;
+    max-width:480px;
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:20px;
+    box-shadow:6px 6px 0 var(--navy);
+    padding:1.1rem 1.4rem;
+    font-family:'Baloo 2', cursive;
+    font-size:1.2rem;
+    color:var(--navy);
+    transform:scale(1);
+  }
+  .reveal-banner.pop-in{ animation:popin .45s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes popin{ 0%{transform:scale(.85); opacity:.4;} 60%{transform:scale(1.05);} 100%{transform:scale(1); opacity:1;} }
+
+  /* ---------- SECTION DIVIDER ---------- */
+  .squiggle{
+    height:18px;
+    background-repeat:repeat-x;
+    background-size:36px 18px;
+    background-image: radial-gradient(circle at 9px 0px, transparent 9px, var(--cream) 10px);
+    margin-top:-1px;
+  }
+
+  /* ---------- CUTE MESSAGES ---------- */
+  .message-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.4rem;
+    margin-top:2.6rem;
+  }
+  .msg-card{
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:18px;
+    box-shadow:5px 5px 0 var(--navy);
+    padding:1.4rem 1.2rem;
+    font-weight:600;
+    font-size:1.02rem;
+    transition:transform .2s ease;
+  }
+  .msg-card:nth-child(odd){transform:rotate(-1deg);}
+  .msg-card:nth-child(even){transform:rotate(1deg);}
+  .msg-card:hover{transform:translateY(-4px) rotate(0deg);}
+
+  /* ---------- FLOWERS ---------- */
+  .flowers-section{background:var(--white);}
+  .flower-field{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1.6rem;
+    margin-top:2.4rem;
+  }
+  .flower{
+    width:88px;
+    cursor:pointer;
+    text-align:center;
+    touch-action:manipulation;
+  }
+  .flower svg{width:100%; display:block;}
+  .petals{ transform:scale(.12); transform-origin:60px 58px; transition:transform .6s cubic-bezier(.34,1.56,.64,1); }
+  .flower.open .petals{ transform:scale(1); }
+  .flower-label{font-size:.8rem; font-weight:700; color:var(--navy); opacity:.55; margin-top:.3rem;}
+
+  .wish-display{
+    margin:2.4rem auto 0;
+    max-width:520px;
+    background:var(--cream);
+    border:3px dashed var(--coral);
+    border-radius:18px;
+    padding:1.2rem 1.4rem;
+    font-family:'Baloo 2', cursive;
+    font-size:1.15rem;
+    text-align:center;
+    color:var(--navy);
+  }
+  .wish-display.pop-in{ animation:popin .45s cubic-bezier(.34,1.56,.64,1); }
+
+  /* ---------- PERSONALIZE FORM ---------- */
+  .personalize-section{
+    min-height:calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 78%);
+  }
+  .form-card{
+    max-width:540px;
+    margin:0 auto;
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:22px;
+    box-shadow:7px 7px 0 var(--navy);
+    padding:2.2rem 2rem;
+    text-align:left;
+  }
+  .form-field{ margin-top:1.3rem; }
+  .form-field label{
+    display:block;
+    font-weight:700;
+    font-size:.92rem;
+    color:var(--navy);
+    margin-bottom:.4rem;
+  }
+  .form-field input, .form-field textarea{
+    width:100%;
+    border:2.5px solid var(--navy);
+    border-radius:14px;
+    padding:.7rem .9rem;
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:.98rem;
+    color:var(--navy);
+    background:var(--cream);
+  }
+  .form-field textarea{ resize:vertical; min-height:90px; }
+  .form-field input:focus, .form-field textarea:focus{ outline:3px solid var(--gold); background:var(--white); }
+  .continue-btn{
+    margin-top:1.8rem;
+    width:100%;
+    font-family:'Baloo 2', cursive;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    border-radius:999px;
+    padding:.85rem 1rem;
+    cursor:pointer;
+    box-shadow:0 6px 0 #C22C74;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .continue-btn:active{ transform:translateY(4px); box-shadow:0 2px 0 #C22C74; }
+  .form-skip{
+    display:block;
+    text-align:center;
+    margin-top:1rem;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--navy);
+    opacity:.55;
+    cursor:pointer;
+    background:none;
+    border:none;
+    text-decoration:underline;
+  }
+
+  /* ---------- RECAP (payment page) ---------- */
+  .recap-card{
+    max-width:480px;
+    margin:2rem auto 0;
+    background:var(--cream);
+    border:3px dashed var(--coral);
+    border-radius:18px;
+    padding:1.2rem 1.4rem;
+    text-align:center;
+  }
+  .recap-label{ font-weight:700; font-size:.9rem; opacity:.7; color:var(--navy); }
+  .recap-message{
+    font-family:'Baloo 2', cursive;
+    font-size:1.2rem;
+    color:var(--navy);
+    margin-top:.5rem;
+    line-height:1.3;
+  }
+  .recap-from{ font-weight:700; font-size:.9rem; color:var(--coral); margin-top:.6rem; }
+
+  /* ---------- PAGE NAVIGATION ---------- */
+  .page-nav{
+    position:sticky;
+    top:0;
+    z-index:60;
+    background:rgba(255,243,248,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:3px solid var(--navy);
+    padding:.7rem 0;
+  }
+  .nav-inner{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:.6rem;
+  }
+  .nav-pill{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:.85rem;
+    border:2.5px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    border-radius:999px;
+    padding:.5rem 1.1rem;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .nav-pill.active, .nav-pill:hover{ background:var(--coral); color:#fff; border-color:var(--coral); }
+  @media (max-width:480px){
+    .nav-pill{font-size:.72rem; padding:.45rem .75rem;}
+  }
+
+  .page{display:none;}
+  .page.active{display:block; animation:pagefade .4s ease;}
+  @keyframes pagefade{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+  .page-footer-nav{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:1rem;
+    padding:.5rem 0 3.2rem;
+  }
+  .next-btn{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:1rem;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    border-radius:999px;
+    padding:.75rem 1.7rem;
+    cursor:pointer;
+    box-shadow:0 5px 0 #C22C74;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .next-btn:active{ transform:translateY(3px); box-shadow:0 2px 0 #C22C74; }
+  .next-btn.back-btn{
+    background:transparent;
+    color:var(--navy);
+    border:2.5px solid var(--navy);
+    box-shadow:none;
+  }
+  .next-btn.back-btn:active{ transform:translateY(2px); }
+
+  /* ---------- OFFER ---------- */
+  .offer-section{
+    background:var(--navy);
+    color:var(--white);
+    text-align:center;
+  }
+  .offer-section .eyebrow{ background:var(--navy); color:var(--gold); border-color:var(--gold);}
+  .offer-section .sub{color:#ffd6ea;}
+  .code-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+    gap:1.4rem;
+    margin-top:2.6rem;
+  }
+  .code-badge{
+    position:relative;
+    background:var(--white);
+    color:var(--navy);
+    border-radius:18px;
+    border:3px solid var(--gold);
+    box-shadow:5px 5px 0 var(--gold);
+    padding:1.5rem 1rem 1.3rem;
+    cursor:pointer;
+    overflow:hidden;
+    transition:transform .15s ease;
+  }
+  .code-badge:hover{transform:translateY(-4px);}
+  .code-badge .code{font-family:'Baloo 2', cursive; font-size:1.5rem; font-weight:700; letter-spacing:.03em;}
+  .code-badge .desc{font-size:.85rem; font-weight:600; opacity:.7; margin-top:.4rem;}
+  .code-badge .tap{font-size:.72rem; font-weight:700; color:var(--coral); margin-top:.7rem; text-transform:uppercase; letter-spacing:.05em;}
+  .burst{
+    position:absolute;
+    top:50%; left:50%;
+    width:10px; height:10px;
+    margin:-5px 0 0 -5px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,193,69,.9), transparent 70%);
+    transform:scale(0);
+    pointer-events:none;
+  }
+  .burst.go{ animation:burstgo .6s ease-out forwards; }
+  @keyframes burstgo{ 0%{transform:scale(0); opacity:1;} 100%{transform:scale(14); opacity:0;} }
+
+  /* ---------- PAYMENT ---------- */
+  .pay-card{
+    max-width:480px;
+    margin:2.6rem auto 0;
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:22px;
+    box-shadow:7px 7px 0 var(--navy);
+    padding:2rem 1.8rem;
+    text-align:center;
+  }
+  .price-display{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.25rem;
+    margin-top:1rem;
+  }
+  .price-amount{
+    font-family:'Baloo 2', cursive;
+    font-size:3.2rem;
+    font-weight:800;
+    color:var(--coral);
+    line-height:1;
+  }
+  .price-label{
+    font-weight:700;
+    font-size:.95rem;
+    opacity:.6;
+  }
+  .coupon-row{
+    margin-top:1.4rem;
+    display:flex;
+    gap:.5rem;
+  }
+  .coupon-row input{
+    flex:1;
+    min-width:0;
+    border:2.5px solid var(--navy);
+    border-radius:999px;
+    padding:.6rem 1rem;
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--navy);
+    background:var(--cream);
+    text-transform:uppercase;
+  }
+  .coupon-row input:focus{ outline:3px solid var(--gold); background:var(--white); }
+  .coupon-btn{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--navy);
+    background:var(--gold);
+    border:2.5px solid var(--navy);
+    border-radius:999px;
+    padding:.6rem 1.2rem;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:transform .12s ease;
+  }
+  .coupon-btn:active{ transform:translateY(2px); }
+  .coupon-feedback{
+    margin-top:.6rem;
+    font-size:.85rem;
+    font-weight:700;
+    min-height:1.1rem;
+  }
+  .coupon-feedback.success{ color:var(--mint); }
+  .coupon-feedback.error{ color:var(--coral); }
+
+  .share-card{
+    display:none;
+    max-width:480px;
+    margin:1.8rem auto 0;
+    background:var(--white);
+    border:3px solid var(--mint);
+    border-radius:22px;
+    box-shadow:7px 7px 0 var(--mint);
+    padding:1.6rem 1.6rem 1.8rem;
+    text-align:center;
+  }
+  .share-card.show{ display:block; animation:popin .45s cubic-bezier(.34,1.56,.64,1); }
+  .share-label{
+    font-family:'Baloo 2', cursive;
+    font-size:1.2rem;
+    color:var(--navy);
+  }
+  .share-link-row{
+    margin-top:1rem;
+    display:flex;
+    gap:.5rem;
+  }
+  .share-link-row input{
+    flex:1;
+    min-width:0;
+    border:2.5px solid var(--navy);
+    border-radius:999px;
+    padding:.6rem 1rem;
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:.85rem;
+    color:var(--navy);
+    background:var(--cream);
+  }
+  .copy-btn{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:.9rem;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    border-radius:999px;
+    padding:.6rem 1.2rem;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:transform .12s ease;
+  }
+  .copy-btn:active{ transform:translateY(2px); }
+  .share-hint{ margin-top:.8rem; font-size:.85rem; font-weight:600; opacity:.65; }
+
+  /* ---------- DAD VIEW BANNER ---------- */
+  .dad-message-banner{
+    margin:1.2rem auto 0;
+    max-width:520px;
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:20px;
+    box-shadow:6px 6px 0 var(--navy);
+    padding:1.1rem 1.4rem;
+  }
+  .dad-message-from{
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--coral);
+  }
+  .dad-message-text{
+    font-family:'Baloo 2', cursive;
+    font-size:1.25rem;
+    color:var(--navy);
+    margin-top:.5rem;
+    line-height:1.3;
+  }
+  .pay-btn{
+    margin-top:1.6rem;
+    width:100%;
+    font-family:'Baloo 2', cursive;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    border-radius:999px;
+    padding:.85rem 1rem;
+    cursor:pointer;
+    box-shadow:0 6px 0 #C22C74;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .pay-btn:active{ transform:translateY(4px); box-shadow:0 2px 0 #C22C74; }
+  .pay-note{margin-top:1rem; font-size:.8rem; opacity:.6; font-style:italic;}
+
+  /* ---------- CAKE ---------- */
+  .cake-section{background:var(--white);}
+  .cake-stage{
+    position:relative;
+    width:240px;
+    height:250px;
+    margin:2.6rem auto 0;
+    cursor:pointer;
+    touch-action:manipulation;
+  }
+  .cake-flame{
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:1.7rem;
+    animation:flicker 1.3s ease-in-out infinite;
+    transition:opacity .45s ease, transform .55s ease;
+    z-index:3;
+  }
+  @keyframes flicker{
+    0%,100%{ transform:translateX(-50%) scale(1) rotate(-3deg); }
+    50%{ transform:translateX(-50%) scale(1.12) rotate(4deg); }
+  }
+  .cake-flame.out{
+    opacity:0;
+    transform:translateX(-50%) translateY(-18px) scale(.4);
+  }
+  .smoke{
+    position:absolute;
+    top:14px; left:50%;
+    width:10px; height:10px;
+    border-radius:50%;
+    background:rgba(140,140,140,.5);
+    pointer-events:none;
+    z-index:2;
+    animation:smokeRise 1.5s ease-out forwards;
+  }
+  @keyframes smokeRise{
+    0%{ opacity:.65; transform:translate(-50%,0) scale(1); }
+    100%{ opacity:0; transform:translate(-50%,-65px) scale(2.4); }
+  }
+  .candle{
+    position:absolute;
+    top:26px; left:50%;
+    transform:translateX(-50%);
+    width:10px; height:40px;
+    background:repeating-linear-gradient(45deg, var(--pink), var(--pink) 6px, #fff 6px, #fff 12px);
+    border:2px solid var(--navy);
+    border-radius:3px;
+    z-index:1;
+  }
+  .cake-body{
+    position:absolute;
+    bottom:20px; left:50%;
+    transform:translateX(-50%);
+    width:200px;
+    transition:transform 1.5s cubic-bezier(.6,-0.15,.7,1);
+  }
+  .cake-tier-top{
+    position:relative;
+    width:170px; height:58px;
+    margin:0 auto;
+    background:var(--pink);
+    border:3px solid var(--navy);
+    border-radius:18px 18px 10px 10px;
+    box-shadow:4px 4px 0 var(--navy);
+    transition:border-radius 1.5s ease;
+  }
+  .cake-frosting{
+    position:absolute;
+    top:-15px; left:0; right:0;
+    height:24px;
+    background:#fff;
+    border:3px solid var(--navy);
+    border-radius:50% 50% 20% 20% / 70% 70% 30% 30%;
+    transition:border-radius 1.5s ease, top 1.5s ease;
+  }
+  .cake-tier-bottom{
+    width:200px; height:72px;
+    margin:-3px auto 0;
+    background:var(--gold);
+    border:3px solid var(--navy);
+    border-radius:10px 10px 18px 18px;
+    box-shadow:5px 5px 0 var(--navy);
+    transition:border-radius 1.5s ease;
+  }
+  .cake-plate{
+    width:220px; height:16px;
+    margin:-2px auto 0;
+    background:var(--navy);
+    border-radius:50%;
+  }
+  .cake-body.melting{
+    transform:translateX(-50%) scaleY(.42) scaleX(1.16);
+  }
+  .cake-body.melting .cake-tier-top{ border-radius:8px 8px 70% 70% / 8px 8px 100% 100%; }
+  .cake-body.melting .cake-tier-bottom{ border-radius:8px 8px 85% 85% / 8px 8px 140% 140%; }
+  .cake-body.melting .cake-frosting{ border-radius:40% 40% 60% 60% / 25% 25% 100% 100%; top:-10px; }
+  .cake-hint{
+    margin-top:1.5rem;
+    font-weight:700;
+    color:var(--coral);
+    font-size:.95rem;
+  }
+  .final-message{
+    display:none;
+    margin:1.8rem auto 0;
+    max-width:480px;
+    background:var(--cream);
+    border:3px solid var(--navy);
+    border-radius:20px;
+    box-shadow:6px 6px 0 var(--navy);
+    padding:1.6rem 1.6rem;
+    text-align:center;
+  }
+  .final-message.show{ display:block; animation:popin .5s cubic-bezier(.34,1.56,.64,1); }
+  .final-message h2{
+    font-family:'Baloo 2', cursive;
+    font-size:clamp(1.7rem,5vw,2.3rem);
+    color:var(--coral);
+  }
+  .final-message p{
+    margin-top:.8rem;
+    font-weight:600;
+    font-size:1.02rem;
+    color:var(--navy);
+    line-height:1.4;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:2.6rem 0 3rem;
+    font-weight:700;
+    color:var(--navy);
+    opacity:.75;
+  }
+
+  /* ---------- TOAST ---------- */
+  #toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--navy);
+    color:#fff;
+    font-weight:700;
+    font-family:'Quicksand', sans-serif;
+    padding:.8rem 1.4rem;
+    border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
+    opacity:0;
+    transition:all .3s ease;
+    z-index:50;
+    pointer-events:none;
+    font-size:.9rem;
+  }
+  #toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  :focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+  @media (max-width:760px){
+    .message-grid{grid-template-columns:1fr 1fr;}
+    .code-grid{grid-template-columns:1fr;}
+    .balloon-field{height:300px;}
+    section{padding:3.2rem 0;}
+  }
+  @media (max-width:480px){
+    .message-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- USER PHOTO BACKGROUND ---------- */
+  #userPhotoBg{
+    position:fixed;
+    inset:0;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:0;
+    z-index:-2;
+    pointer-events:none;
+    transition:opacity 1s ease;
+    filter:saturate(1.05) blur(0.5px);
+  }
+  #userPhotoBg.show{ opacity:.16; }
+  #userPhotoBg::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(255,243,248,.55), rgba(255,243,248,.85));
+  }
+  .photo-hint{
+    margin-top:.4rem;
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--navy);
+    opacity:.55;
+  }
+  .form-field input[type="file"]{
+    width:100%;
+    border:2.5px dashed var(--coral);
+    border-radius:14px;
+    padding:.6rem .8rem;
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:.85rem;
+    color:var(--navy);
+    background:var(--cream);
+  }
+
+  /* ---------- FLOATING HEARTS OVERLAY ---------- */
+  #heartsOverlay{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+    pointer-events:none;
+  }
+  #heartsOverlay .floaty-heart{
+    position:absolute;
+    bottom:-10%;
+    font-size:1.4rem;
+    opacity:.55;
+    animation:heartFloat linear infinite;
+    filter:drop-shadow(0 2px 2px rgba(122,30,75,.12));
+  }
+  @keyframes heartFloat{
+    0%{ transform:translateY(0) translateX(0) rotate(-8deg); opacity:0; }
+    8%{ opacity:.6; }
+    50%{ transform:translateY(-52vh) translateX(18px) rotate(8deg); }
+    92%{ opacity:.5; }
+    100%{ transform:translateY(-108vh) translateX(-14px) rotate(-6deg); opacity:0; }
+  }
+  @media (prefers-reduced-motion:reduce){ #heartsOverlay{display:none;} }
+
+  /* ---------- RIBBON DOODLES ---------- */
+  .ribbon-doodle{
+    position:absolute;
+    pointer-events:none;
+    z-index:1;
+    opacity:.9;
+  }
+  .ribbon-strip{
+    position:relative;
+    height:34px;
+    margin:0 auto;
+    max-width:1080px;
+    background-image:repeating-linear-gradient(90deg, var(--ribbon) 0 26px, var(--ribbon-dark) 26px 30px, transparent 30px 46px);
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    opacity:.5;
+  }
+
+  /* ---------- KITTEN DOODLES ---------- */
+  .kitten-doodle{
+    position:absolute;
+    pointer-events:none;
+    z-index:1;
+    filter:drop-shadow(2px 4px 3px rgba(122,30,75,.12));
+  }
+  .kitten-doodle svg{ width:100%; display:block; }
+  .hero{ position:relative; }
+  .messages-section{ position:relative; overflow:hidden; }
+  .flowers-section{ position:relative; overflow:hidden; }
+  .cake-section{ position:relative; overflow:hidden; }
+  .payment-section{ position:relative; overflow:hidden; }
+  .personalize-section{ position:relative; overflow:hidden; }
+  footer{ position:relative; overflow:hidden; }
+  @media (max-width:760px){
+    .kitten-doodle{ transform:scale(.62); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- USER PHOTO BACKGROUND (set from the personalize form) -->
+  <div id="userPhotoBg"></div>
+
+  <!-- FLOATING HEARTS (site-wide, sits behind every page) -->
+  <div id="heartsOverlay">
+    <span class="floaty-heart" style="left:4%; font-size:1.1rem; animation-duration:13s; animation-delay:0s;">💗</span>
+    <span class="floaty-heart" style="left:14%; font-size:1.6rem; animation-duration:17s; animation-delay:2s;">💕</span>
+    <span class="floaty-heart" style="left:24%; font-size:1rem; animation-duration:11s; animation-delay:5s;">💖</span>
+    <span class="floaty-heart" style="left:36%; font-size:1.8rem; animation-duration:19s; animation-delay:1s;">💗</span>
+    <span class="floaty-heart" style="left:48%; font-size:1.2rem; animation-duration:14s; animation-delay:7s;">💞</span>
+    <span class="floaty-heart" style="left:58%; font-size:1.5rem; animation-duration:16s; animation-delay:3s;">💕</span>
+    <span class="floaty-heart" style="left:68%; font-size:1rem; animation-duration:12s; animation-delay:6s;">💖</span>
+    <span class="floaty-heart" style="left:78%; font-size:1.7rem; animation-duration:18s; animation-delay:4s;">💗</span>
+    <span class="floaty-heart" style="left:88%; font-size:1.2rem; animation-duration:15s; animation-delay:8s;">💞</span>
+    <span class="floaty-heart" style="left:94%; font-size:1.4rem; animation-duration:13s; animation-delay:2.5s;">💕</span>
+  </div>
+
+  <!-- PAGE NAVIGATION -->
+  <nav class="page-nav" id="pageNav">
+    <div class="wrap nav-inner">
+      <button class="nav-pill active" data-page="1" onclick="goToPage(1)">📝 Personalize</button>
+      <button class="nav-pill" data-page="2" onclick="goToPage(2)">🎈 Hello</button>
+      <button class="nav-pill" data-page="3" onclick="goToPage(3)">🌷 Wishes</button>
+      <button class="nav-pill" data-page="4" onclick="goToPage(4)">🎂 Cake</button>
+      <button class="nav-pill" data-page="5" onclick="goToPage(5)">💌 Send a Gift</button>
+    </div>
+  </nav>
+
+  <!-- PAGE 1: PERSONALIZE -->
+  <div class="page active" id="page1">
+  <section class="personalize-section">
+    <div class="kitten-doodle" style="left:-10px; top:8%; width:150px; transform:rotate(-8deg);"></div>
+    <div class="kitten-doodle" style="right:-16px; bottom:6%; width:170px; transform:rotate(8deg) scaleX(-1);"></div>
+    <div class="wrap center">
+      <div class="form-card">
+        <span class="eyebrow">📝 Make it personal</span>
+        <h2 style="font-size:clamp(1.6rem,4vw,2.1rem); margin-top:.7rem;">Before We Begin…</h2>
+        <p class="sub" style="margin-left:0; margin-right:0;">Tell us a bit about you and your bestie, and we'll weave it into the surprise.</p>
+
+        <div class="form-field">
+          <label for="yourName">Your name</label>
+          <input type="text" id="yourName" placeholder="e.g. Aanya">
+        </div>
+        <div class="form-field">
+          <label for="dadNickname">What do you call your bestie?</label>
+          <input type="text" id="dadNickname" placeholder="e.g. Bestie, Bff, Soul sister…">
+        </div>
+        <div class="form-field">
+          <label for="customMessage">Your message for them</label>
+          <textarea id="customMessage" placeholder="Write something straight from the heart…"></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="bgPhotoUpload">Add a photo (shown as a soft background across the site) 💗</label>
+          <input type="file" id="bgPhotoUpload" accept="image/*">
+          <p class="photo-hint" id="photoHint">Optional — pick a favourite pic of you two!</p>
+        </div>
+
+        <button class="continue-btn" id="continueButton">Continue →</button>
+        <button class="form-skip" id="skipButton">Skip for now</button>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- END PAGE 1 -->
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="star" style="top:14%; left:18%;">✨</div>
+    <div class="star" style="top:28%; right:20%; animation-delay:.8s;">⭐</div>
+    <div class="star" style="top:8%; right:32%; animation-delay:1.4s;">✨</div>
+
+    <div class="kitten-doodle" style="left:-18px; bottom:-14px; width:150px; transform:rotate(-6deg);"></div>
+    <div class="kitten-doodle" style="right:-14px; top:6%; width:120px; transform:rotate(8deg) scaleX(-1);"></div>
+
+    <div class="wrap">
+      <span class="eyebrow">💕 For my ride-or-die 💕</span>
+      <h1>Happy Friendship Day</h1>
+      <p class="tagline">To the friend who turns ordinary days into the best memories.</p>
+      <p class="hint">pop a balloon to find what's inside ↓</p>
+
+      <div class="balloon-field" id="balloonField"></div>
+
+      <div class="reveal-banner" id="balloonMessage">🎈 Tap any balloon!</div>
+    </div>
+  </header>
+  <div class="squiggle"></div>
+
+  <!-- CUTE MESSAGES -->
+  <section class="messages-section">
+    <div class="ribbon-strip"></div>
+    <div class="kitten-doodle" style="left:-20px; top:10px; width:130px; transform:rotate(-10deg);"></div>
+    <div class="kitten-doodle" style="right:-24px; bottom:-6px; width:160px; transform:rotate(7deg) scaleX(-1);"></div>
+    <div class="wrap center">
+      <span class="eyebrow">💌 Little truths</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.4rem);">Just Because, Bestie…</h2>
+      <p class="sub">A few things that never get old.</p>
+      <div class="message-grid">
+        <div class="msg-card">🐾 You're the friend every diary entry secretly mentions.</div>
+        <div class="msg-card">🎀 You turned "just okay" days into core memories.</div>
+        <div class="msg-card">📞 Still my first call, good news or bad.</div>
+        <div class="msg-card">😹 World's best inside jokes, only the two of us get.</div>
+        <div class="msg-card">🎗️ My definition of "ride-or-die" has always been you.</div>
+        <div class="msg-card">🏡 Home feels warmer whenever you're around.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer-nav">
+    <button class="next-btn back-btn" id="page2BackBtn" onclick="goToPage(1)">← Back</button>
+    <button class="next-btn" onclick="goToPage(3)">Next: Wishes →</button>
+  </div>
+
+  </div>
+  <!-- END PAGE 2 -->
+
+  <!-- PAGE 3 -->
+  <div class="page" id="page3">
+
+  <!-- FLOWERS -->
+  <section class="flowers-section">
+    <div class="ribbon-strip"></div>
+    <div class="kitten-doodle" style="right:-16px; top:4px; width:140px; transform:rotate(9deg);"></div>
+    <div class="kitten-doodle" style="left:-22px; bottom:0; width:150px; transform:rotate(-8deg) scaleX(-1);"></div>
+    <div class="wrap center">
+      <span class="eyebrow">🌷 Make a wish</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.4rem);">Pick a Bloom for Your Bestie</h2>
+      <p class="sub">Tap a bud and watch it open.</p>
+      <div class="flower-field" id="flowerField"></div>
+      <div class="wish-display" id="wishMessage">🌷 Tap a flower to reveal a wish!</div>
+    </div>
+  </section>
+
+  <div class="page-footer-nav">
+    <button class="next-btn back-btn" onclick="goToPage(2)">← Back</button>
+    <button class="next-btn" id="page3NextBtn" onclick="goToPage(4)">Next: One More Surprise 🎂 →</button>
+  </div>
+
+  </div>
+  <!-- END PAGE 3 -->
+
+  <!-- PAGE 4 (payment) -->
+  <div class="page" id="page5">
+
+  <!-- PAYMENT -->
+  <section class="payment-section">
+    <div class="ribbon-strip"></div>
+    <div class="kitten-doodle" style="left:-18px; top:8px; width:130px; transform:rotate(-7deg);"></div>
+    <div class="wrap center">
+      <span class="eyebrow">💌 Send a gift</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.4rem);">Send Your Bestie Some Love</h2>
+      <p class="sub">One sweet price, no fuss — just check out securely.</p>
+
+      <div class="recap-card" id="recapCard">
+        <p class="recap-label">Your message to <span id="recapNickname">Bestie</span>:</p>
+        <p class="recap-message" id="recapMessage">"Happy Friendship Day! 💕"</p>
+        <p class="recap-from">— <span id="recapName">You</span></p>
+      </div>
+
+      <div class="pay-card">
+
+        <div class="price-display">
+          <span class="price-amount" id="priceAmount">₹99</span>
+          <span class="price-label">Flat gift price</span>
+        </div>
+
+        <div class="coupon-row">
+          <input type="text" id="couponInput" placeholder="Have a discount code?">
+          <button class="coupon-btn" id="couponApplyButton">Apply</button>
+        </div>
+        <p class="coupon-feedback" id="couponFeedback"></p>
+
+        <button class="pay-btn" id="payButton">Pay ₹99 with Razorpay 💕</button>
+        <p class="pay-note">Demo checkout — site owner: add your Razorpay Key ID in the script to go live.</p>
+      </div>
+
+      <div class="share-card" id="shareCard">
+        <p class="share-label">🎁 Your gift link is ready!</p>
+        <div class="share-link-row">
+          <input type="text" id="shareLinkInput" readonly>
+          <button class="copy-btn" id="copyLinkButton">Copy Link</button>
+        </div>
+        <p class="share-hint">Send this to your bestie so they can open their surprise 💕</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer-nav">
+    <button class="next-btn back-btn" onclick="goToPage(4)">← Back</button>
+  </div>
+
+  </div>
+  <!-- END PAGE 4 (payment) -->
+
+  <!-- PAGE 5 (cake) -->
+  <div class="page" id="page4">
+
+  <!-- BIRTHDAY-STYLE CAKE -->
+  <section class="cake-section">
+    <div class="ribbon-strip"></div>
+    <div class="kitten-doodle" style="right:-16px; top:6px; width:135px; transform:rotate(8deg);"></div>
+    <div class="kitten-doodle" style="left:-20px; bottom:2px; width:120px; transform:rotate(-9deg) scaleX(-1);"></div>
+    <div class="wrap center">
+      <span class="eyebrow">🎂 One more surprise</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.4rem);">Make a Wish, <span id="cakeNickname">Bestie</span>!</h2>
+      <p class="sub">Tap the cake to blow out the candle.</p>
+
+      <div class="cake-stage" id="cakeStage">
+        <div class="cake-flame" id="cakeFlame">🔥</div>
+        <div class="candle" id="cakeCandle"></div>
+        <div class="cake-body" id="cakeBody">
+          <div class="cake-tier-top">
+            <div class="cake-frosting"></div>
+          </div>
+          <div class="cake-tier-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+
+      <p class="cake-hint" id="cakeHint">👆 Tap the candle to blow it out</p>
+
+      <div class="final-message" id="finalMessage">
+        <h2>🎉 Happy Friendship Day! 🎉</h2>
+        <p>Thank you for every inside joke, every late-night call, and every memory we've made together. We hope this little wish made you smile.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer-nav">
+    <button class="next-btn back-btn" onclick="goToPage(3)">← Back</button>
+    <button class="next-btn" id="page4NextBtn" onclick="goToPage(5)">Next: Send a Gift →</button>
+  </div>
+
+  </div>
+  <!-- END PAGE 5 (cake) -->
+
+  <footer>
+    <div class="kitten-doodle" style="left:50%; top:-10px; width:90px; transform:translateX(-50%) rotate(-4deg);"></div>
+    Made with 💕 for the friendships that feel like home.
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script>
+  // ---------- helpers ----------
+  function toast(msg, ms){
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(el._t);
+    el._t = setTimeout(()=> el.classList.remove('show'), ms || 2400);
+  }
+  function confettiBurst(x, y){
+    if (typeof confetti === 'function'){
+      confetti({ particleCount: 40, spread: 60, startVelocity: 28, origin: { x: x/window.innerWidth, y: y/window.innerHeight }, colors: ['#FF4F93','#FFC94D','#C48CFF','#FFB3D1','#FF8FC0'] });
+    }
+  }
+  function rand(min, max){ return Math.random()*(max-min)+min; }
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  // ---------- CUTE KITTEN DOODLES ----------
+  function kittenSVG(fur, bow){
+    return `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="80" cy="112" rx="54" ry="40" fill="${fur}" stroke="var(--navy)" stroke-width="3"/>
+      <circle cx="80" cy="62" r="46" fill="${fur}" stroke="var(--navy)" stroke-width="3"/>
+      <polygon points="38,34 54,8 68,46" fill="${fur}" stroke="var(--navy)" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="122,34 106,8 92,46" fill="${fur}" stroke="var(--navy)" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="46,30 55,17 61,42" fill="#FFD3E6"/>
+      <polygon points="114,30 105,17 99,42" fill="#FFD3E6"/>
+      <circle cx="56" cy="92" r="9" fill="#FFC2DD" opacity=".85"/>
+      <circle cx="104" cy="92" r="9" fill="#FFC2DD" opacity=".85"/>
+      <path d="M56 60 q9 10 0 17" fill="none" stroke="var(--navy)" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M104 60 q-9 10 0 17" fill="none" stroke="var(--navy)" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="76,79 84,79 80,87" fill="#FF6FA5"/>
+      <path d="M80 87 q0 7 -9 8" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M80 87 q0 7 9 8" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+      <g stroke="var(--navy)" stroke-width="1.6" stroke-linecap="round" opacity=".7">
+        <line x1="16" y1="70" x2="46" y2="76"/>
+        <line x1="16" y1="84" x2="46" y2="84"/>
+        <line x1="114" y1="76" x2="144" y2="70"/>
+        <line x1="114" y1="84" x2="144" y2="84"/>
+      </g>
+      <g transform="translate(80 120)">
+        <polygon points="0,-6 -17,-17 -17,5" fill="${bow}" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="0,-6 17,-17 17,5" fill="${bow}" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="0" cy="-6" r="6.5" fill="${bow}" stroke="var(--navy)" stroke-width="2.5"/>
+      </g>
+    </svg>`;
+  }
+  const kittenFurs = ['#FFFFFF', '#FFEAF3', '#FDD3E8', '#FFF7EF'];
+  const kittenBows = ['#FF6FA5', '#FFC94D', '#C48CFF', '#FF9EBB'];
+  document.querySelectorAll('.kitten-doodle').forEach((el, i) => {
+    el.innerHTML = kittenSVG(kittenFurs[i % kittenFurs.length], kittenBows[i % kittenBows.length]);
+  });
+
+  // ---------- BACKGROUND PHOTO (from the personalize form) ----------
+  const photoInput = document.getElementById('bgPhotoUpload');
+  const photoHint = document.getElementById('photoHint');
+  const userPhotoBg = document.getElementById('userPhotoBg');
+  if (photoInput){
+    photoInput.addEventListener('change', () => {
+      const file = photoInput.files && photoInput.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')){
+        if (photoHint) photoHint.textContent = 'Please choose an image file 💗';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        userPhotoBg.style.backgroundImage = `url('${e.target.result}')`;
+        userPhotoBg.classList.add('show');
+        if (photoHint) photoHint.textContent = 'Aww, added! It will glow softly behind every page 💞';
+        toast('Background photo added 💕');
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ---------- BALLOONS ----------
+  const balloonColors = ['#FF4F93','#FFC94D','#C48CFF','#FFB3D1','#FF8FC0'];
+  const balloonMessages = [
+    "You're my favourite person to overshare with. 💕",
+    "Best hugs in the whole world. 🤗",
+    "My first friend, my forever friend.",
+    "Thanks for laughing at all my terrible jokes. 😆",
+    "You make ordinary days feel special.",
+    "Sweetest. Kindest. Funniest. Bestie-est. 🎀",
+    "Behind every good day is a group chat with you in it.",
+    "You're the reason 'ride or die' isn't just a saying. ⭐",
+    "I love you more than all the balloons here. 🎈",
+    "Thank you for always showing up for me."
+  ];
+
+  function balloonSVG(color){
+    return `<svg viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="30" cy="34" rx="28" ry="32" fill="${color}"/>
+      <ellipse cx="20" cy="20" rx="6" ry="9" fill="#ffffff" opacity="0.28"/>
+      <polygon points="24,63 36,63 30,73" fill="${color}"/>
+      <line x1="30" y1="73" x2="30" y2="108" stroke="#8a6d4a" stroke-width="2" stroke-dasharray="2 4"/>
+    </svg>`;
+  }
+
+  const balloonField = document.getElementById('balloonField');
+  const balloonMessageEl = document.getElementById('balloonMessage');
+  const usedMessages = new Set();
+
+  function nextMessage(){
+    if (usedMessages.size >= balloonMessages.length) usedMessages.clear();
+    let m;
+    do { m = pick(balloonMessages); } while (usedMessages.has(m) && usedMessages.size < balloonMessages.length);
+    usedMessages.add(m);
+    return m;
+  }
+
+  function spawnBalloon(slot, leftPct){
+    const el = document.createElement('div');
+    el.className = 'balloon';
+    const color = pick(balloonColors);
+    el.innerHTML = balloonSVG(color);
+    el.style.left = leftPct + '%';
+    el.style.animationDelay = rand(0, 2).toFixed(2) + 's';
+    el.dataset.message = nextMessage();
+    el.addEventListener('click', () => popBalloon(el, slot, leftPct));
+    balloonField.appendChild(el);
+    return el;
+  }
+
+  function popBalloon(el, slot, leftPct){
+    if (el.classList.contains('popped')) return;
+    el.classList.add('popped');
+    const rect = el.getBoundingClientRect();
+    confettiBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+    balloonMessageEl.textContent = el.dataset.message;
+    balloonMessageEl.classList.remove('pop-in');
+    void balloonMessageEl.offsetWidth;
+    balloonMessageEl.classList.add('pop-in');
+    setTimeout(() => {
+      el.remove();
+      spawnBalloon(slot, leftPct);
+    }, 900);
+  }
+
+  const balloonSlots = 5;
+  for (let i=0; i<balloonSlots; i++){
+    const leftPct = 6 + (i * (88/(balloonSlots-1)));
+    spawnBalloon(i, leftPct + rand(-2,2));
+  }
+
+  // ---------- FLOWERS ----------
+  const petalColors = ['#FF4F93','#FFC94D','#FFB3D1','#C48CFF','#FF8FC0'];
+  const wishes = [
+    "Wishing you endless sleepovers and zero awkward silences. 🛋️",
+    "May your playlist always have room for our favourite songs. 🎧",
+    "Wishing you a year as iconic as our inside jokes. 😄",
+    "May your phone always have room for one more selfie together. 🤳",
+    "Wishing you sunshine on every hangout and extra fries on every plate. 🍟",
+    "May you always find the exact right meme at the exact right time. 📱",
+    "Wishing you a Friendship Day with zero left-on-read moments. 💌",
+    "May every year give us even more reasons to celebrate us. 🌟"
+  ];
+  const usedWishes = new Set();
+  function nextWish(){
+    if (usedWishes.size >= wishes.length) usedWishes.clear();
+    let w;
+    do { w = pick(wishes); } while (usedWishes.has(w) && usedWishes.size < wishes.length);
+    usedWishes.add(w);
+    return w;
+  }
+
+  function flowerSVG(color){
+    let petals = '';
+    for (let a=0; a<360; a+=60){
+      petals += `<ellipse cx="60" cy="40" rx="11" ry="19" fill="${color}" transform="rotate(${a} 60 58)"/>`;
+    }
+    return `<svg viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="78" x2="60" y2="124" stroke="#5FBE8C" stroke-width="3"/>
+      <ellipse cx="48" cy="100" rx="10" ry="5" fill="#5FBE8C" transform="rotate(-20 48 100)"/>
+      <g class="petals">
+        ${petals}
+        <circle cx="60" cy="58" r="11" fill="#FFC145"/>
+      </g>
+    </svg>`;
+  }
+
+  const flowerField = document.getElementById('flowerField');
+  const wishMessageEl = document.getElementById('wishMessage');
+
+  function spawnFlower(){
+    const el = document.createElement('div');
+    el.className = 'flower';
+    const color = pick(petalColors);
+    el.innerHTML = flowerSVG(color) + '<div class="flower-label">tap me</div>';
+    el.dataset.wish = nextWish();
+    el.addEventListener('click', () => {
+      if (el.classList.contains('open')) return;
+      el.classList.add('open');
+      el.querySelector('.flower-label').textContent = '🌼 bloomed';
+      const rect = el.getBoundingClientRect();
+      confettiBurst(rect.left + rect.width/2, rect.top);
+      wishMessageEl.textContent = el.dataset.wish;
+      wishMessageEl.classList.remove('pop-in');
+      void wishMessageEl.offsetWidth;
+      wishMessageEl.classList.add('pop-in');
+    });
+    flowerField.appendChild(el);
+  }
+  for (let i=0; i<5; i++) spawnFlower();
+
+  // ---------- CAKE ----------
+  const cakeStage = document.getElementById('cakeStage');
+  const cakeFlame = document.getElementById('cakeFlame');
+  const cakeBody = document.getElementById('cakeBody');
+  const cakeHint = document.getElementById('cakeHint');
+  const finalMessage = document.getElementById('finalMessage');
+  let cakeBlown = false;
+
+  if (cakeStage){
+    cakeStage.addEventListener('click', () => {
+      if (cakeBlown){
+        // Already blown out — tap again to relight and reset for another go.
+        cakeBlown = false;
+        cakeFlame.classList.remove('out');
+        cakeBody.classList.remove('melting');
+        finalMessage.classList.remove('show');
+        cakeHint.textContent = '👆 Tap the candle to blow it out';
+        return;
+      }
+      cakeBlown = true;
+
+      cakeFlame.classList.add('out');
+
+      for (let i=0; i<6; i++){
+        const puff = document.createElement('div');
+        puff.className = 'smoke';
+        puff.style.left = (50 + rand(-8,8)) + '%';
+        puff.style.animationDelay = rand(0, .35).toFixed(2) + 's';
+        cakeStage.appendChild(puff);
+        setTimeout(() => puff.remove(), 1700);
+      }
+
+      const stageRect = cakeStage.getBoundingClientRect();
+      confettiBurst(stageRect.left + stageRect.width/2, stageRect.top + 20);
+      cakeHint.textContent = '🕯️ Wish made! Watch the cake melt with joy…';
+
+      setTimeout(() => {
+        cakeBody.classList.add('melting');
+      }, 400);
+
+      setTimeout(() => {
+        finalMessage.classList.add('show');
+        const rect = cakeStage.getBoundingClientRect();
+        confettiBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+        finalMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 1900);
+    });
+  }
+
+  // ---------- DISCOUNT CODES ----------
+  document.querySelectorAll('.code-badge').forEach(badge => {
+    badge.addEventListener('click', async () => {
+      const code = badge.dataset.code;
+      try {
+        await navigator.clipboard.writeText(code);
+      } catch(e){
+        const ta = document.createElement('textarea');
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e2){}
+        ta.remove();
+      }
+      const burst = document.createElement('div');
+      burst.className = 'burst go';
+      badge.appendChild(burst);
+      setTimeout(()=> burst.remove(), 650);
+      const rect = badge.getBoundingClientRect();
+      confettiBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+      toast('Copied "' + code + '"! 🎉');
+    });
+  });
+
+  // ---------- PAYMENT ----------
+  const RAZORPAY_KEY_ID = "rzp_live_Sz9gct8RO5E1jB"; // <-- replace with your real Razorpay Key ID to go live
+  const FIXED_AMOUNT = 99; // flat gift price in INR
+  let currentAmount = FIXED_AMOUNT;
+
+  const discountCodes = {
+    BESTIE15:     { type: 'percent',  value: 15 },
+    SQUAD20:      { type: 'percent',  value: 20, minOrder: 999 },
+    RIBBONFREE:   { type: 'shipping' },
+    BFFOREVER10:  { type: 'percent',  value: 10 },
+    FRIEND99:     { type: 'flat',     value: 99, minOrder: 599 },
+    FIRSTBFF:     { type: 'percent',  value: 5 },
+    SAVE50:       { type: 'flat',     value: 50 },
+    BESTIEISFREE: { type: 'free' }
+  };
+
+  function updatePriceUI(){
+    if (currentAmount <= 0){
+      document.getElementById('priceAmount').textContent = 'FREE';
+      document.getElementById('payButton').textContent = "Get Link — It's Free! 💙";
+    } else {
+      document.getElementById('priceAmount').textContent = '₹' + currentAmount;
+      document.getElementById('payButton').textContent = 'Pay ₹' + currentAmount + ' with Razorpay 💙';
+    }
+  }
+
+  document.getElementById('couponApplyButton').addEventListener('click', () => {
+    const raw = document.getElementById('couponInput').value.trim().toUpperCase();
+    const feedback = document.getElementById('couponFeedback');
+    currentAmount = FIXED_AMOUNT;
+
+    if (!raw){
+      feedback.textContent = 'Enter a code first 💛';
+      feedback.className = 'coupon-feedback error';
+      updatePriceUI();
+      return;
+    }
+    const deal = discountCodes[raw];
+    if (!deal){
+      feedback.textContent = "That code doesn't look right.";
+      feedback.className = 'coupon-feedback error';
+      updatePriceUI();
+      return;
+    }
+    if (deal.minOrder && FIXED_AMOUNT < deal.minOrder){
+      feedback.textContent = `${raw} needs a minimum order of ₹${deal.minOrder}.`;
+      feedback.className = 'coupon-feedback error';
+      updatePriceUI();
+      return;
+    }
+    if (deal.type === 'percent'){
+      currentAmount = Math.max(1, Math.round(FIXED_AMOUNT * (1 - deal.value / 100)));
+      feedback.textContent = `${raw} applied — ${deal.value}% off! 🎉`;
+    } else if (deal.type === 'flat'){
+      currentAmount = Math.max(1, FIXED_AMOUNT - deal.value);
+      feedback.textContent = `${raw} applied — ₹${deal.value} off! 🎉`;
+    } else if (deal.type === 'shipping'){
+      feedback.textContent = `${raw} applied — free shipping! 🎉`;
+    } else if (deal.type === 'free'){
+      currentAmount = 0;
+      feedback.textContent = `${raw} applied — this one's on the house! 🎉`;
+    }
+    feedback.className = 'coupon-feedback success';
+    updatePriceUI();
+  });
+
+  function onPaymentSuccess(){
+    toast('Payment successful! 🎉');
+    showShareLink();
+  }
+
+  document.getElementById('payButton').addEventListener('click', () => {
+    const amount = currentAmount;
+    if (amount <= 0){
+      toast('Free gift unlocked! 🎉');
+      onPaymentSuccess();
+      return;
+    }
+    if (RAZORPAY_KEY_ID.includes('YOUR_KEY_ID')){
+      toast('Demo payment successful! 🎉', 2600);
+      onPaymentSuccess();
+      return;
+    }
+    if (typeof Razorpay === 'undefined'){
+      toast("Couldn't load Razorpay. Check your connection.");
+      return;
+    }
+    const options = {
+      key: RAZORPAY_KEY_ID,
+      amount: amount * 100,
+      currency: 'INR',
+      name: "Friendship Day Gift",
+      description: 'A little something for my bestie',
+      theme: { color: '#7A1E4B' },
+      handler: function(response){
+        onPaymentSuccess();
+      }
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+  });
+
+  // ---------- SHAREABLE LINK ----------
+  function buildShareLink(){
+    const name = (document.getElementById('yourName').value || '').trim();
+    const nickname = (document.getElementById('dadNickname').value || '').trim();
+    const message = (document.getElementById('customMessage').value || '').trim();
+    const params = new URLSearchParams();
+    if (name) params.set('from', name);
+    if (nickname) params.set('to', nickname);
+    if (message) params.set('msg', message);
+    const base = window.location.origin + window.location.pathname;
+    const query = params.toString();
+    return query ? base + '?' + query : base;
+  }
+
+  function showShareLink(){
+    const link = buildShareLink();
+    const input = document.getElementById('shareLinkInput');
+    input.value = link;
+    const card = document.getElementById('shareCard');
+    card.classList.add('show');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150);
+  }
+
+  document.getElementById('copyLinkButton').addEventListener('click', async () => {
+    const input = document.getElementById('shareLinkInput');
+    try {
+      await navigator.clipboard.writeText(input.value);
+    } catch(e){
+      input.select();
+      try { document.execCommand('copy'); } catch(e2){}
+    }
+    toast('Link copied! Send it to your bestie 💕');
+  });
+
+  // ---------- PERSONALIZE FORM ----------
+  function updateRecap(){
+    const yourNameEl = document.getElementById('yourName');
+    const dadNicknameEl = document.getElementById('dadNickname');
+    const customMessageEl = document.getElementById('customMessage');
+    const name = (yourNameEl ? yourNameEl.value : '').trim();
+    const nickname = (dadNicknameEl ? dadNicknameEl.value : '').trim();
+    const message = (customMessageEl ? customMessageEl.value : '').trim();
+
+    // These recap elements live inside the payment page, which is removed
+    // entirely in the bestie's view — guard against them being null so that
+    // navigating to other pages (like Cake) never breaks.
+    const recapNicknameEl = document.getElementById('recapNickname');
+    const recapMessageEl = document.getElementById('recapMessage');
+    const recapNameEl = document.getElementById('recapName');
+    if (recapNicknameEl) recapNicknameEl.textContent = nickname || 'Bestie';
+    if (recapMessageEl){
+      recapMessageEl.textContent =
+        '"' + (message || "Happy Friendship Day! You're my favorite person. 💕") + '"';
+    }
+    if (recapNameEl) recapNameEl.textContent = name || 'You';
+
+    const cakeNicknameEl = document.getElementById('cakeNickname');
+    if (cakeNicknameEl) cakeNicknameEl.textContent = nickname || 'Bestie';
+  }
+
+  document.getElementById('continueButton').addEventListener('click', () => {
+    updateRecap();
+    goToPage(2);
+  });
+  document.getElementById('skipButton').addEventListener('click', () => {
+    updateRecap();
+    goToPage(2);
+  });
+
+  // ---------- PAGE NAVIGATION ----------
+  let isFriendView = false;
+
+  function goToPage(n){
+    if (isFriendView && (n === 1 || n === 5)) return; // friend's view never shows the form or payment
+    if (n === 4 || n === 5) updateRecap();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page' + n);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('.nav-pill').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.page, 10) === n);
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // ---------- DAD'S VIEW (opened via shared link) ----------
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function initFriendView(){
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get('to');
+    const from = params.get('from');
+    const msg = params.get('msg');
+    if (!to && !from && !msg) return;
+
+    isFriendView = true;
+
+    const navPersonalize = document.querySelector('.nav-pill[data-page="1"]');
+    const navPayment = document.querySelector('.nav-pill[data-page="5"]');
+    if (navPersonalize) navPersonalize.style.display = 'none';
+    if (navPayment) navPayment.style.display = 'none';
+
+    // Hide the footer "Back"/"Next" buttons that would otherwise lead
+    // to the personalize form or the payment page.
+    const page2Back = document.getElementById('page2BackBtn');
+    const page4Next = document.getElementById('page4NextBtn');
+    if (page2Back) page2Back.style.display = 'none';
+    if (page4Next) page4Next.style.display = 'none';
+
+    // Page 5 (payment) is never used in the friend's view, so remove it
+    // from the DOM entirely as an extra safeguard.
+    const paymentPage = document.getElementById('page5');
+    if (paymentPage) paymentPage.remove();
+
+    const heroWrap = document.querySelector('.hero .wrap');
+    const hint = heroWrap.querySelector('.hint');
+    const banner = document.createElement('div');
+    banner.className = 'dad-message-banner';
+    banner.innerHTML =
+      '<p class="dad-message-from">💌 A surprise from ' + escapeHtml(from || 'someone who loves you') + '</p>' +
+      '<p class="dad-message-text">"' + escapeHtml(msg || "Happy Friendship Day! You're my favorite person. 💕") + '"</p>';
+    heroWrap.insertBefore(banner, hint);
+
+    if (to){
+      document.querySelector('.hero h1').textContent = "Happy Friendship Day, " + to + '!';
+    }
+
+    goToPage(2);
+  }
+  initFriendView();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
+</body>
+</html>
