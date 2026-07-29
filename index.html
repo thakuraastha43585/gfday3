@@ -281,6 +281,47 @@
     border:none;
     text-decoration:underline;
   }
+  .form-error{
+    margin-top:.9rem;
+    font-size:.88rem;
+    font-weight:700;
+    color:#D62872;
+    min-height:1.1rem;
+  }
+  .form-required-note{
+    margin-top:1rem;
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--navy);
+    opacity:.55;
+    text-align:center;
+    line-height:1.4;
+  }
+  .form-field input.field-error,
+  .form-field textarea.field-error{
+    border-color:#D62872;
+    background:#FFEAF2;
+    animation:shakeField .35s ease;
+  }
+  @keyframes shakeField{
+    0%,100%{ transform:translateX(0); }
+    25%{ transform:translateX(-5px); }
+    75%{ transform:translateX(5px); }
+  }
+  .nav-pill.locked{
+    opacity:.45;
+    cursor:not-allowed;
+  }
+  .promo-codes-wrap{
+    max-width:480px;
+    margin:1.6rem auto 0;
+  }
+  .promo-heading{
+    font-family:'Baloo 2', cursive;
+    font-size:1.1rem;
+    color:var(--navy);
+    margin-bottom:.9rem;
+  }
 
   /* ---------- RECAP (payment page) ---------- */
   .recap-card{
@@ -845,12 +886,106 @@
   @media (max-width:760px){
     .kitten-doodle{ transform:scale(.62); }
   }
+
+  /* ---------- PHOTO BALLOON BADGE ---------- */
+  .balloon.balloon-photo{ z-index:2; }
+  .balloon.balloon-photo::after{
+    content:'📷';
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    font-size:1.1rem;
+    background:var(--white);
+    border:2px solid var(--navy);
+    border-radius:50%;
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:2px 2px 0 var(--navy);
+  }
+
+  /* ---------- FULL-SCREEN PHOTO MODAL ---------- */
+  .photo-modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(122,30,75,.6);
+    backdrop-filter:blur(4px);
+    z-index:300;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+  }
+  .photo-modal-overlay.show{ display:flex; animation:popin .4s cubic-bezier(.34,1.56,.64,1); }
+  .photo-modal-card{
+    position:relative;
+    background:var(--white);
+    border:4px solid var(--navy);
+    border-radius:26px;
+    box-shadow:0 20px 50px rgba(122,30,75,.35);
+    padding:1.4rem 1.4rem 1.7rem;
+    max-width:min(92vw, 640px);
+    max-height:92vh;
+    text-align:center;
+  }
+  .photo-modal-card img{
+    display:block;
+    max-width:100%;
+    max-height:72vh;
+    width:auto;
+    height:auto;
+    border-radius:18px;
+    border:3px solid var(--pink);
+    object-fit:contain;
+    margin:0 auto;
+  }
+  .photo-modal-caption{
+    margin-top:1rem;
+    font-family:'Baloo 2', cursive;
+    font-size:1.15rem;
+    color:var(--navy);
+  }
+  .photo-modal-close{
+    position:absolute;
+    top:-16px;
+    right:-16px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--coral);
+    color:#fff;
+    border:3px solid var(--navy);
+    font-family:'Baloo 2', cursive;
+    font-size:1.3rem;
+    line-height:1;
+    cursor:pointer;
+    box-shadow:2px 2px 0 var(--navy);
+  }
+  .photo-modal-bow{
+    position:absolute;
+    top:-26px;
+    left:50%;
+    transform:translateX(-50%);
+    width:70px;
+    pointer-events:none;
+  }
 </style>
 </head>
 <body>
 
   <!-- USER PHOTO BACKGROUND (set from the personalize form) -->
   <div id="userPhotoBg"></div>
+
+  <!-- FULL-SCREEN PHOTO POP-OUT (triggered by the 3rd balloon) -->
+  <div class="photo-modal-overlay" id="photoModalOverlay">
+    <div class="photo-modal-card">
+      <button class="photo-modal-close" id="photoModalClose" aria-label="Close">×</button>
+      <img id="photoModalImg" src="" alt="Your special photo">
+      <p class="photo-modal-caption">📸 Just us being us. 💕</p>
+    </div>
+  </div>
 
   <!-- FLOATING HEARTS (site-wide, sits behind every page) -->
   <div id="heartsOverlay">
@@ -889,16 +1024,16 @@
         <p class="sub" style="margin-left:0; margin-right:0;">Tell us a bit about you and your bestie, and we'll weave it into the surprise.</p>
 
         <div class="form-field">
-          <label for="yourName">Your name</label>
-          <input type="text" id="yourName" placeholder="e.g. Aanya">
+          <label for="yourName">Your name *</label>
+          <input type="text" id="yourName" placeholder="e.g. Aanya" required>
         </div>
         <div class="form-field">
-          <label for="dadNickname">What do you call your bestie?</label>
-          <input type="text" id="dadNickname" placeholder="e.g. Bestie, Bff, Soul sister…">
+          <label for="dadNickname">What do you call your bestie? *</label>
+          <input type="text" id="dadNickname" placeholder="e.g. Bestie, Bff, Soul sister…" required>
         </div>
         <div class="form-field">
-          <label for="customMessage">Your message for them</label>
-          <textarea id="customMessage" placeholder="Write something straight from the heart…"></textarea>
+          <label for="customMessage">Your message for them *</label>
+          <textarea id="customMessage" placeholder="Write something straight from the heart…" required></textarea>
         </div>
 
         <div class="form-field">
@@ -907,8 +1042,9 @@
           <p class="photo-hint" id="photoHint">Optional — pick a favourite pic of you two!</p>
         </div>
 
+        <p class="form-error" id="formError"></p>
         <button class="continue-btn" id="continueButton">Continue →</button>
-        <button class="form-skip" id="skipButton">Skip for now</button>
+        <p class="form-required-note">* Please fill these in — the whole surprise is built around them, so we ask everyone to complete this before moving on.</p>
       </div>
     </div>
   </section>
@@ -965,7 +1101,7 @@
 
   <div class="page-footer-nav">
     <button class="next-btn back-btn" id="page2BackBtn" onclick="goToPage(1)">← Back</button>
-    <button class="next-btn" onclick="goToPage(3)">Next: Wishes →</button>
+    <button class="next-btn" onclick="advanceTo(3)">Next: Wishes →</button>
   </div>
 
   </div>
@@ -990,7 +1126,7 @@
 
   <div class="page-footer-nav">
     <button class="next-btn back-btn" onclick="goToPage(2)">← Back</button>
-    <button class="next-btn" id="page3NextBtn" onclick="goToPage(4)">Next: One More Surprise 🎂 →</button>
+    <button class="next-btn" id="page3NextBtn" onclick="advanceTo(4)">Next: One More Surprise 🎂 →</button>
   </div>
 
   </div>
@@ -1007,6 +1143,24 @@
       <span class="eyebrow">💌 Send a gift</span>
       <h2 style="font-size:clamp(1.8rem,4vw,2.4rem);">Send Your Bestie Some Love</h2>
       <p class="sub">One sweet price, no fuss — just check out securely.</p>
+
+      <div class="promo-codes-wrap">
+        <p class="promo-heading">🎁 Two codes just for you — tap to copy!</p>
+        <div class="code-grid">
+          <div class="code-badge" data-code="BESTIEISFREE">
+            <div class="code">BESTIEISFREE</div>
+            <div class="desc">This one's completely on the house 💕</div>
+            <div class="tap">Tap to copy</div>
+            <div class="burst"></div>
+          </div>
+          <div class="code-badge" data-code="HALF50">
+            <div class="code">HALF50</div>
+            <div class="desc">50% off your gift, just because</div>
+            <div class="tap">Tap to copy</div>
+            <div class="burst"></div>
+          </div>
+        </div>
+      </div>
 
       <div class="recap-card" id="recapCard">
         <p class="recap-label">Your message to <span id="recapNickname">Bestie</span>:</p>
@@ -1085,7 +1239,7 @@
 
   <div class="page-footer-nav">
     <button class="next-btn back-btn" onclick="goToPage(3)">← Back</button>
-    <button class="next-btn" id="page4NextBtn" onclick="goToPage(5)">Next: Send a Gift →</button>
+    <button class="next-btn" id="page4NextBtn" onclick="advanceTo(5)">Next: Send a Gift →</button>
   </div>
 
   </div>
@@ -1165,11 +1319,14 @@
     supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
 
+  let currentPhotoUrl = null;
+
   const photoInput = document.getElementById('bgPhotoUpload');
   const photoHint = document.getElementById('photoHint');
   const userPhotoBg = document.getElementById('userPhotoBg');
 
   function setBgPhoto(url){
+    currentPhotoUrl = url;
     userPhotoBg.style.backgroundImage = `url('${url}')`;
     userPhotoBg.classList.add('show');
   }
@@ -1229,6 +1386,28 @@
     });
   }
 
+  // ---------- FULL-SCREEN PHOTO POP-OUT ----------
+  const photoModalOverlay = document.getElementById('photoModalOverlay');
+  const photoModalImg = document.getElementById('photoModalImg');
+  const photoModalClose = document.getElementById('photoModalClose');
+
+  function openPhotoModal(url){
+    photoModalImg.src = url;
+    photoModalOverlay.classList.add('show');
+  }
+  function closePhotoModal(){
+    photoModalOverlay.classList.remove('show');
+  }
+  if (photoModalClose) photoModalClose.addEventListener('click', closePhotoModal);
+  if (photoModalOverlay){
+    photoModalOverlay.addEventListener('click', (e) => {
+      if (e.target === photoModalOverlay) closePhotoModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePhotoModal();
+  });
+
   // ---------- BALLOONS ----------
   const balloonColors = ['#FF4F93','#FFC94D','#C48CFF','#FFB3D1','#FF8FC0'];
   const balloonMessages = [
@@ -1256,6 +1435,7 @@
   const balloonField = document.getElementById('balloonField');
   const balloonMessageEl = document.getElementById('balloonMessage');
   const usedMessages = new Set();
+  const PHOTO_BALLOON_SLOT = 2; // the 3rd balloon (0-indexed) pops out your photo
 
   function nextMessage(){
     if (usedMessages.size >= balloonMessages.length) usedMessages.clear();
@@ -1272,7 +1452,12 @@
     el.innerHTML = balloonSVG(color);
     el.style.left = leftPct + '%';
     el.style.animationDelay = rand(0, 2).toFixed(2) + 's';
-    el.dataset.message = nextMessage();
+    if (slot === PHOTO_BALLOON_SLOT){
+      el.classList.add('balloon-photo');
+      el.dataset.message = "📸 Your special photo!";
+    } else {
+      el.dataset.message = nextMessage();
+    }
     el.addEventListener('click', () => popBalloon(el, slot, leftPct));
     balloonField.appendChild(el);
     return el;
@@ -1283,7 +1468,17 @@
     el.classList.add('popped');
     const rect = el.getBoundingClientRect();
     confettiBurst(rect.left + rect.width/2, rect.top + rect.height/2);
-    balloonMessageEl.textContent = el.dataset.message;
+
+    if (slot === PHOTO_BALLOON_SLOT){
+      if (currentPhotoUrl){
+        balloonMessageEl.textContent = "📸 Your special photo! Tap the balloon anytime to see it big.";
+        openPhotoModal(currentPhotoUrl);
+      } else {
+        balloonMessageEl.textContent = "📷 Add a photo on the Personalize page — then this balloon pops it out here! 💕";
+      }
+    } else {
+      balloonMessageEl.textContent = el.dataset.message;
+    }
     balloonMessageEl.classList.remove('pop-in');
     void balloonMessageEl.offsetWidth;
     balloonMessageEl.classList.add('pop-in');
@@ -1428,7 +1623,9 @@
       setTimeout(()=> burst.remove(), 650);
       const rect = badge.getBoundingClientRect();
       confettiBurst(rect.left + rect.width/2, rect.top + rect.height/2);
-      toast('Copied "' + code + '"! 🎉');
+      const couponInputEl = document.getElementById('couponInput');
+      if (couponInputEl) couponInputEl.value = code;
+      toast('Copied "' + code + '"! Popped it into the coupon box too 🎉');
     });
   });
 
@@ -1440,6 +1637,7 @@
   const discountCodes = {
     BESTIE15:     { type: 'percent',  value: 15 },
     SQUAD20:      { type: 'percent',  value: 20, minOrder: 999 },
+    HALF50:       { type: 'percent',  value: 50 },
     RIBBONFREE:   { type: 'shipping' },
     BFFOREVER10:  { type: 'percent',  value: 10 },
     FRIEND99:     { type: 'flat',     value: 99, minOrder: 599 },
@@ -1543,6 +1741,7 @@
     if (name) params.set('from', name);
     if (nickname) params.set('to', nickname);
     if (message) params.set('msg', message);
+    if (currentPhotoUrl) params.set('photo', currentPhotoUrl);
     const base = window.location.origin + window.location.pathname;
     const query = params.toString();
     return query ? base + '?' + query : base;
@@ -1595,19 +1794,64 @@
   }
 
   document.getElementById('continueButton').addEventListener('click', () => {
+    const yourNameEl = document.getElementById('yourName');
+    const dadNicknameEl = document.getElementById('dadNickname');
+    const customMessageEl = document.getElementById('customMessage');
+    const formError = document.getElementById('formError');
+
+    const fields = [yourNameEl, dadNicknameEl, customMessageEl];
+    let hasEmpty = false;
+    fields.forEach(el => {
+      if (!el.value.trim()){
+        el.classList.add('field-error');
+        hasEmpty = true;
+      } else {
+        el.classList.remove('field-error');
+      }
+    });
+
+    if (hasEmpty){
+      if (formError) formError.textContent = "Please fill in all the fields — we'd love to know a bit about you both first! 💕";
+      return;
+    }
+
+    if (formError) formError.textContent = '';
     updateRecap();
-    goToPage(2);
+    advanceTo(2);
   });
-  document.getElementById('skipButton').addEventListener('click', () => {
-    updateRecap();
-    goToPage(2);
+
+  // Clear the error highlight as soon as someone starts fixing a field.
+  ['yourName', 'dadNickname', 'customMessage'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el){
+      el.addEventListener('input', () => el.classList.remove('field-error'));
+    }
   });
 
   // ---------- PAGE NAVIGATION ----------
   let isFriendView = false;
+  let furthestUnlockedPage = 1;
+
+  function updateNavLocks(){
+    if (isFriendView) return; // the friend can browse pages 2-4 freely
+    document.querySelectorAll('.nav-pill').forEach(b => {
+      const n = parseInt(b.dataset.page, 10);
+      b.classList.toggle('locked', n > furthestUnlockedPage);
+    });
+  }
+
+  function advanceTo(n){
+    furthestUnlockedPage = Math.max(furthestUnlockedPage, n);
+    updateNavLocks();
+    goToPage(n);
+  }
 
   function goToPage(n){
     if (isFriendView && (n === 1 || n === 5)) return; // friend's view never shows the form or payment
+    if (!isFriendView && n > furthestUnlockedPage){
+      toast('Complete the steps in order first! 💕');
+      return;
+    }
     if (n === 4 || n === 5) updateRecap();
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById('page' + n);
@@ -1617,6 +1861,7 @@
     });
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
+  updateNavLocks();
 
   // ---------- DAD'S VIEW (opened via shared link) ----------
   function escapeHtml(str){
@@ -1630,9 +1875,14 @@
     const to = params.get('to');
     const from = params.get('from');
     const msg = params.get('msg');
+    const photo = params.get('photo');
     if (!to && !from && !msg) return;
 
     isFriendView = true;
+    furthestUnlockedPage = 5;
+    document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('locked'));
+
+    if (photo) setBgPhoto(photo);
 
     const navPersonalize = document.querySelector('.nav-pill[data-page="1"]');
     const navPayment = document.querySelector('.nav-pill[data-page="5"]');
