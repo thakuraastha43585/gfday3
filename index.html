@@ -1099,6 +1099,7 @@
   <div id="toast"></div>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
   // ---------- helpers ----------
   function toast(msg, ms){
@@ -1152,9 +1153,35 @@
   });
 
   // ---------- BACKGROUND PHOTO (from the personalize form) ----------
+  // Stored in Supabase Storage so the photo survives a page reload —
+  // only the (tiny) public URL is kept in localStorage, not the image itself.
+  const SUPABASE_URL = 'https://otemshexmvidrmllotfn.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90ZW1zaGV4bXZpZHJtbGxvdGZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjQ2MzQsImV4cCI6MjEwMDg0MDYzNH0.FWNB2Gj6pTELyXj6Gje70REzZCkv-cJQKCFgIIQTrAA';
+  const SUPABASE_BUCKET = 'friendship-photos';
+  const BG_PHOTO_STORAGE_KEY = 'friendshipBgPhotoUrl';
+
+  let supabaseClient = null;
+  if (window.supabase && typeof window.supabase.createClient === 'function'){
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+
   const photoInput = document.getElementById('bgPhotoUpload');
   const photoHint = document.getElementById('photoHint');
   const userPhotoBg = document.getElementById('userPhotoBg');
+
+  function setBgPhoto(url){
+    userPhotoBg.style.backgroundImage = `url('${url}')`;
+    userPhotoBg.classList.add('show');
+  }
+
+  // Restore a previously uploaded photo on page load / reload.
+  (function restoreBgPhoto(){
+    try {
+      const savedUrl = localStorage.getItem(BG_PHOTO_STORAGE_KEY);
+      if (savedUrl) setBgPhoto(savedUrl);
+    } catch (e){ /* localStorage unavailable — skip silently */ }
+  })();
+
   if (photoInput){
     photoInput.addEventListener('change', () => {
       const file = photoInput.files && photoInput.files[0];
@@ -1163,14 +1190,42 @@
         if (photoHint) photoHint.textContent = 'Please choose an image file 💗';
         return;
       }
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        userPhotoBg.style.backgroundImage = `url('${e.target.result}')`;
-        userPhotoBg.classList.add('show');
-        if (photoHint) photoHint.textContent = 'Aww, added! It will glow softly behind every page 💞';
+
+      // Show it instantly from the local file while the upload happens.
+      const localPreviewUrl = URL.createObjectURL(file);
+      setBgPhoto(localPreviewUrl);
+      if (photoHint) photoHint.textContent = 'Uploading your photo… 💗';
+
+      if (!supabaseClient){
+        if (photoHint) photoHint.textContent = "Added for now, but it won't survive a reload (Supabase didn't load) 💗";
         toast('Background photo added 💕');
-      };
-      reader.readAsDataURL(file);
+        return;
+      }
+
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const path = `bg-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+
+      supabaseClient.storage.from(SUPABASE_BUCKET).upload(path, file, {
+        cacheControl: '3600',
+        upsert: false
+      }).then(({ error }) => {
+        if (error){
+          console.error('Supabase upload error:', error);
+          if (photoHint) photoHint.textContent = "Added for now, but couldn't save it for next time (check the Supabase bucket setup) 💗";
+          toast('Background photo added 💕');
+          return;
+        }
+        const { data } = supabaseClient.storage.from(SUPABASE_BUCKET).getPublicUrl(path);
+        const publicUrl = data && data.publicUrl;
+        if (publicUrl){
+          setBgPhoto(publicUrl);
+          try { localStorage.setItem(BG_PHOTO_STORAGE_KEY, publicUrl); } catch (e){ /* ignore */ }
+          if (photoHint) photoHint.textContent = 'Aww, saved! It will glow softly behind every page — even after a reload 💞';
+        } else {
+          if (photoHint) photoHint.textContent = 'Aww, added! It will glow softly behind every page 💞';
+        }
+        toast('Background photo added 💕');
+      });
     });
   }
 
